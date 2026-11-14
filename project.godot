@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="DashBoard"
+run/main_scene="uid://d3wa1fve42dvb"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
