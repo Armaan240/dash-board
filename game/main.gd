@@ -11,7 +11,7 @@ func _ready():
 	road_base = $road.position.x
 	sky_base = $sky.position.x
 	
-var lanes = [-400.0, 400.0]
+var lanes = [0.0]
 func _process(delta):
 	if Input.is_action_pressed("ui_up"):
 		speed = move_toward(speed, 1.0, delta * 0.3)
@@ -24,3 +24,15 @@ func _on_spawn_timer_timeout():
 	var car = car_scenes.pick_random().instantiate()
 	car.lane_offset = lanes.pick_random()
 	$Traffic.add_child(car)
+	
+func crash(car):
+	car.bounce()
+	speed = 0.1
+	jolt()
+
+func jolt():
+	var tw = create_tween()
+	tw.tween_property($Cockpit, "position:y", 25.0, 0.05)
+	tw.tween_property($Cockpit, "position:y", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)	
+	

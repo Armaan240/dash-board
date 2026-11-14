@@ -36,25 +36,27 @@ position = Vector2(640, 340)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ngg10")
 autoplay = "default"
-frame_progress = 0.52573323
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264398411]
-z_index = 1
-position = Vector2(640, 370)
-scale = Vector2(1, 1.0277778)
-texture = ExtResource("4_dgpao")
+frame_progress = 0.114665434
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1224308752]
 wait_time = 3.1999999999999997
 autostart = true
 
-[node name="steer" type="Sprite2D" parent="." unique_id=748449097]
+[node name="Traffic" type="Node" parent="." unique_id=729154072]
+
+[node name="Cockpit" type="Node2D" parent="." unique_id=1232217993]
+
+[node name="steer" type="Sprite2D" parent="Cockpit" unique_id=748449097]
 z_index = 2
 position = Vector2(640, 620)
 scale = Vector2(2, 2)
 texture = ExtResource("1_oa506")
 script = ExtResource("2_xtpaf")
 
-[node name="Traffic" type="Node" parent="." unique_id=729154072]
+[node name="dashboard" type="Sprite2D" parent="Cockpit" unique_id=1264398411]
+z_index = 1
+position = Vector2(640, 370)
+scale = Vector2(1, 1.0277778)
+texture = ExtResource("4_dgpao")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
