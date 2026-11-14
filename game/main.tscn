@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://d3wa1fve42dvb"]
 
 [ext_resource type="Texture2D" uid="uid://dv776vjne8f4f" path="res://icon.svg" id="1_oa506"]
+[ext_resource type="Script" uid="uid://dm7lyfsg5bsva" path="res://game/main.gd" id="1_vop5m"]
 [ext_resource type="Script" uid="uid://c5ter8cac74al" path="res://game/steer.gd" id="2_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://pw4ket3wwr50" path="res://game/traffic.tscn" id="3_emt18"]
 
 [node name="main" type="Node2D" unique_id=1447248174]
+script = ExtResource("1_vop5m")
 
 [node name="sky" type="ColorRect" parent="." unique_id=1418261381]
 offset_right = 1260.0
-offset_bottom = 360.0
+offset_bottom = 47.0
 color = Color(0.43576503, 0.97126406, 1, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=752862072]
 color = Color(0.34407577, 0.34407574, 0.34407574, 1)
-polygon = PackedVector2Array(340, 224, 938, 222, 1077, 710, 223, 712)
+polygon = PackedVector2Array(593, 229, 769, 227, 1077, 710, 223, 712)
 
 [node name="traffic" type="Node" parent="." unique_id=224468794]
 
@@ -25,3 +28,7 @@ offset_bottom = 720.0
 position = Vector2(640, 620)
 texture = ExtResource("1_oa506")
 script = ExtResource("2_xtpaf")
+
+[node name="Traffic" type="Node" parent="." unique_id=729154072]
+
+[node name="traffic" parent="Traffic" unique_id=579190077 instance=ExtResource("3_emt18")]

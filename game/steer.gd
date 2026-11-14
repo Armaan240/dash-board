@@ -17,4 +17,4 @@ func _input(event):
 func _process(delta):
 	steer = move_toward(steer, 0.0, delta * 0.3)
 	rotation = lerp_angle(rotation, steer * deg_to_rad(120), delta * 10)
-	
+	get_tree().current_scene.steer = steer
