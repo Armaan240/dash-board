@@ -3,6 +3,7 @@ extends Node2D
 var speed := 0.5
 var steer := 0.0
 
+var started := false
 var car_scenes = [preload("res://game/traffic.tscn"),]
 var road_base := 0.0
 var sky_base := 0.0
@@ -11,10 +12,18 @@ var vibration_on := true
 func _ready():
 	road_base = $road.position.x
 	sky_base = $sky.position.x
+	var tw = create_tween().set_loops()
+	tw.tween_property($UI/title, "modulate:a", 0.2, 0.6)
+	tw.tween_property($UI/title, "modulate:a", 1.0, 0.6)
 	
 const LANE := 200.0
 var player_x := 0.0
 var lanes = [-LANE, LANE] 
+
+func _input(event):
+	if not started and event is InputEventMouseButton and event.pressed:
+		started = true
+		$UI/title.visible = false
 
 func _process(delta):
 	var target := 0.4
